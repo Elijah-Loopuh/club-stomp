@@ -1,0 +1,1 @@
+oGlobalData.createPlayer(600, 600);

@@ -1,0 +1,2 @@
+
+gun = "Grenade Launcher";

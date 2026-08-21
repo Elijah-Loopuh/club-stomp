@@ -1,0 +1,2 @@
+
+gun = "Assault Rifle";
