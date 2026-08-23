@@ -10,8 +10,8 @@ positions =
 	(room_width/3) * 3, 
 ]
 
-spacing = 128;
-topMargin = 128;
+spacing = 128*8;
+topMargin = 128*8;
 
 for (var i = 0; i < array_length(main); i++)
 {

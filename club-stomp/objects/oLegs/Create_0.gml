@@ -13,7 +13,7 @@ grip = regularGrip; //rate of change of vectVelocity axis under normal condition
 speedCap = regularSpeedCap; //tracks current speed cap
 drag = dragStatic; //fraction d/1 of speed lost every 
 dashCooldown = dashCooldownMaster;
-animationSpeed = 1/45; //multiplier from vectVelocity scale to animation fps
+animationSpeed = 1/(45*8); //multiplier from vectVelocity scale to animation fps
 
 updateVars = function() //updates variables
 {
@@ -67,7 +67,7 @@ updateVectVelocity = function() //handles move input & drag application
 	{
 		drag = dragDynamic;
 		vectVelocity = oGlobalData.vectSum(vectVelocity, oGlobalData.vectScale(vectMoveInput, grip)); //modifies velocity with move input
-		vectVelocity = oGlobalData.vectMax(vectVelocity, speedCap); //cap speed under normal circumstances
+		//vectVelocity = oGlobalData.vectMax(vectVelocity, speedCap); //cap speed under normal circumstances
 	}
 	else //high drag when no input allowed
 	{
@@ -82,7 +82,7 @@ updateVectVelocity = function() //handles move input & drag application
 	
 	if (abs(oGlobalData.vectLength(vectVelocity) - speedCap) < snapSpeed && false)
 	{
-		vectVelocity = oGlobalData.vectMax(vectVelocity, speedCap); //snap to speed cap to prevent fluttering
+		//vectVelocity = oGlobalData.vectMax(vectVelocity, speedCap); //snap to speed cap to prevent fluttering
 	}
 }
 

@@ -35,7 +35,7 @@ if !instance_exists(oLegs)
 //Get camera size
 
 { //smooth zooming
-	zoomTarget = 1 + (0.04 * oGlobalData.vectLength(oLegs.vectVelocity));
+	zoomTarget = 1 + (0.04 * oGlobalData.vectLength(oLegs.vectVelocity)/8);
 
 	if (zoomTarget > zoomSmooth)
 	{
