@@ -1,4 +1,4 @@
 if (room == rTestingRoom)
 {
-	//oGlobalData.forcePlaySong(mMetronome, 100);
+	oGlobalData.forcePlaySong(mDemoTrack1, 100);
 }

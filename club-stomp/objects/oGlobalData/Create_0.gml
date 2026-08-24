@@ -37,6 +37,9 @@ randomise();
 		songList = //holds data for music crit system, like song bpm
 		[
 			{asset : mMetronome, herz : 2}, 
+			{asset : mDemoTrack1, herz : 7/3}, 
+			{asset : mMetronome, herz : 7/3}, 
+			{asset : mMetronome, herz : 7/3}, 
 		];
 
 		currentSlotData = //stores data used to put guns in slots for the player
