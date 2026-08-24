@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sNoTexture",
-    "path":"sprites/sNoTexture/sNoTexture.yy",
+    "name":"sWallPlacer",
+    "path":"sprites/sWallPlacer/sWallPlacer.yy",
   },
   "spriteMaskId":null,
   "visible":true,

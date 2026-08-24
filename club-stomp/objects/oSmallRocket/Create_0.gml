@@ -14,6 +14,8 @@ setupBullet = function()
 	agility = 5; //degrees per frame the rocket turns
 }
 
+event_inherited(); //creates functions for checking collision
+/*
 checkCollision = function()
 {
 	for (var i = 0; i < 5; i ++)
@@ -35,7 +37,7 @@ checkCollision = function()
 		}
 	}
 }
-
+*/
 doTracking = function()
 {
 	if (tracking)

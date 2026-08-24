@@ -47,9 +47,23 @@ vectPos = [0, 0];
 			{
 				fireDelayTracker -= 1;
 			}
+
+			
 			if (oGlobalData.getWepInputs(fireKey) && fireDelayTracker <= 0) //shoot bullets
 			{
-				instance_create_layer(vectProjectileOffset[0], vectProjectileOffset[1], "PlayerThings", projectile, {spread : spread, angle : image_angle, vectVelocity: vectVelocity, tag : tag, damage : damage});
+				if (oGlobalData.isCrit)
+				{
+					effectiveDamage = damage * critMultiplier; //apply crit multiplier
+					for (var i = 0; i < 25; i ++)
+					{
+						instance_create_layer(x, y, "instances", oCritGlitter);
+					}
+				}
+				else
+				{
+					effectiveDamage = damage; //normal damage
+				}
+				instance_create_layer(vectProjectileOffset[0], vectProjectileOffset[1], "PlayerThings", projectile, {spread : spread, angle : image_angle, vectVelocity: vectVelocity, tag : tag, damage : effectiveDamage});
 				fireDelayTracker = fireDelayMaster;
 				image_index = 1;
 				oBody.vectPosTarget = oBody.vectPos;

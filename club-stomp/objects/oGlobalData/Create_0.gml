@@ -1,7 +1,10 @@
 
+id.depth = 16001; //too deep to be drawn
+
 randomise();
 //data structures
 {
+		//lists used to handle collisions, music playing, etc
 		collisionList = //contains a list of collidable objects
 		[
 			oWall, 
@@ -30,6 +33,11 @@ randomise();
 		[
 			rTestingRoom, 
 		];
+		
+		songList = //holds data for music crit system, like song bpm
+		[
+			{asset : mMetronome, herz : 2}, 
+		];
 
 		currentSlotData = //stores data used to put guns in slots for the player
 		{
@@ -45,7 +53,7 @@ randomise();
 				sprintGrip : 2.0*8,  //lower grip for sprinting
 				regularSpeedCap : 25*8,
 				sprintSpeedCap : 60*8,
-				dragStatic : 0.2, //drag when no buttons held
+				dragStatic : 2*8, //drag when no buttons held
 				dragDynamic : 0.0,//drag when movement buttons are held
 				dashPower : 80*8, //dash speed
 				dashCooldownMaster : 60*0.35, //# of frames between dashes
@@ -71,7 +79,7 @@ randomise();
 				sprintGrip : 3.0*8,  //lower grip for sprinting
 				regularSpeedCap : 30*8,
 				sprintSpeedCap : 50*8,
-				dragStatic : 0.20, //drag when no buttons held
+				dragStatic : 5*8, //drag when no buttons held
 				dragDynamic : 0.0,//drag when movement buttons are held
 				dashPower : 75*8, //dash speed
 				dashCooldownMaster : 60*0.35, //# of frames between dash initiations
@@ -97,7 +105,7 @@ randomise();
 				sprintGrip : 0.5*8,  //lower grip for sprinting
 				regularSpeedCap : 15*8,
 				sprintSpeedCap : 25*8,
-				dragStatic : 0.07, //drag when no buttons held
+				dragStatic : 5, //drag is now applied the same way as grip is
 				dragDynamic : 0.0,//drag when movement buttons are held
 				dashPower : 35*8, //dash speed
 				dashCooldownMaster : 60*1.25, //# of frames between dash initiations
@@ -123,7 +131,7 @@ randomise();
 				sprintGrip : 0.35*8,  //lower grip for sprinting
 				regularSpeedCap : 12*8,
 				sprintSpeedCap : 25*8,
-				dragStatic : 0.05, //drag when no buttons held
+				dragStatic : 5, //drag when no buttons held
 				dragDynamic : 0.0,//drag when movement buttons are held
 				dashPower : 25*8, //dash speed
 				dashCooldownMaster : 60*2.0, //# of frames between dash initiations
@@ -155,6 +163,7 @@ randomise();
 				vectVelocity : [75*8, 0], //projectile velocity
 				tag : "friendly", //used by bullets to decide who to hurt
 				damage : 8, 
+				critMultiplier : 2, 
 			}, 
 			{ //middle rifle
 				name : "Sniper Rifle", //used for easier handling
@@ -168,6 +177,7 @@ randomise();
 				vectVelocity : [200*8, 0], 
 				tag : "friendly", 
 				damage : 25, 
+				critMultiplier : 2, 
 			},
 			{ //smallRPG
 				name : "Missile Launcher", //used for easier handling
@@ -180,7 +190,8 @@ randomise();
 				mountOffset : [0, 0], //filled in when gun is assigned to a slot. placeholder
 				vectVelocity : [2*8, 0], //used as acceleration by rockets
 				tag : "friendly", 
-				damage : 50
+				damage : 50, 
+				critMultiplier : 2, 
 			},
 			
 			{ //shotgun
@@ -195,6 +206,7 @@ randomise();
 				vectVelocity : [60*8, 0], 
 				tag : "friendly", 
 				damage : 3, 
+				critMultiplier : 2, 
 			}, 
 			{ //flamethrower
 				name : "Flamethrower", //used for easier handling
@@ -208,6 +220,7 @@ randomise();
 				vectVelocity : [18*8, 0], //projectile velocity 
 				tag : "friendly", 
 				damage : 1, 
+				critMultiplier : 2, 
 			}, 
 			{ //flak cannon
 				name : "Grenade Launcher", //used for easier handling
@@ -221,6 +234,7 @@ randomise();
 				vectVelocity : [35*8, 0],  //projectile velocity 
 				tag : "friendly", 
 				damage : 5, 
+				critMultiplier : 2, 
 			}, 
 			{ //rotary gun
 				name : "Minigun", //used for easier handling
@@ -234,6 +248,7 @@ randomise();
 				vectVelocity : [60*8, 0],  //projectile velocity 
 				tag : "friendly", 
 				damage : 3, 
+				critMultiplier : 2, 
 			}, 
 			{ //quad rocket
 				name : "Multi Missile", //used for easier handling
@@ -247,6 +262,7 @@ randomise();
 				vectVelocity : [1*8, 0],  //projectile velocity 
 				tag : "friendly", 
 				damage : 25, 
+				critMultiplier : 2, 
 			}, 
 		];
 
@@ -257,6 +273,10 @@ randomise();
 		vectZero = [0, 0]; //used to set other stuff to
 		
 		frameCounter = 0;
+		
+		currentHerz = 2; //default value, filled in when a song is played
+		
+		isCrit = false; //determines if player attacks will crit 
 }
 
 //functions
@@ -592,21 +612,22 @@ randomise();
 {
 		function spawn_walls(x, y, width /*use room width*/, height /*use room height*/) // replaces devMarker with proper walls
 		{
-		    var w = width/64 + 2;
-		    var h = height/64 + 2;
+		    var w = width/512 + 2;
+		    var h = height/512 + 2;
 
 		    for (var yy = 0; yy < h; yy++)
 		    {
 		        for (var xx = 0; xx < w; xx++)
 		        {
-					//show_debug_message(xx*32)
-					//show_debug_message(yy*32)
+					//show_debug_message(xx);
+					//show_debug_message(yy);
+					//show_debug_message("\n");
 		            //check for devmarker
-		            if (position_meeting((xx*64)+32, (yy*64)+32, oWallMarker))
+		            if (position_meeting((xx*512)+256, (yy*512)+256, oWallMarker))
 		            {
 		                instance_create_layer(
-		                    x + xx * 64,
-		                    y + yy * 64,
+		                    x + xx * 512,
+		                    y + yy * 512,
 		                    "Instances",
 		                    oWall
 		                );
@@ -616,10 +637,10 @@ randomise();
 		    }
 		}
 		
-		function spawn_room_walls(x, y, width /*use room width*/, height /*use room height*/) // makes room wall boundaries
+ 		function spawn_room_walls(x, y, width /*use room width*/, height /*use room height*/) // makes room wall boundaries
 		{
-		    var w = width/64 + 2;
-		    var h = height/64 + 2;
+		    var w = width/64*8 + 2;
+		    var h = height/64*8 + 2;
 
 		    for (var yy = 0; yy < h; yy++)
 		    {
@@ -629,8 +650,8 @@ randomise();
 		            if (xx < 2 || xx >= w - 2 || yy < 2 || yy >= h - 2)
 		            {
 		                instance_create_layer(
-		                    x + xx * 64,
-		                    y + yy * 64,
+		                    x + xx * 64*8,
+		                    y + yy * 64*8,
 		                    "Instances",
 		                    oWall
 		                );
@@ -694,5 +715,20 @@ randomise();
 			draw_set_font(font);
 			
 			draw_text_transformed_colour(x, y, string, xScale, yScale, draw_angle, c1, c2, c3, c4, alpha);
+		}
+		
+		forcePlaySong = function(songId, priority)
+		{
+			for (var i = 0; i < array_length(songList); i ++)
+			{
+				audio_stop_sound(songList[i].asset); //stop all songs
+				
+				if (songList[i].asset == songId) //fill out current herz to make the crit system work
+				{
+					currentHerz = songList[i].herz; 
+				}
+			}
+			audio_play_sound(songId, priority, true);
+			oMusicPlayer.currentTime = 0; //start crit clock from zero
 		}
 }

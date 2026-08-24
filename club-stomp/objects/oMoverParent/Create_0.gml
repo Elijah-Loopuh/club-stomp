@@ -26,6 +26,19 @@ takeDamage = function(ammount) //take damage and die if out of hp
 
 updateVectVelocity = function() //handles move input & drag application
 {
+
+	
+	vectVelocity = oGlobalData.vectSum(vectVelocity, oGlobalData.vectInvert(oGlobalData.vectClamp(vectVelocity, drag)));
+	if (oGlobalData.vectLength(vectVelocity) < grip)
+	{
+		vectVelocity = oGlobalData.vectZero;
+	}
+	
+	if (abs(oGlobalData.vectLength(vectVelocity) - speedCap) < grip && false)
+	{
+		vectVelocity = oGlobalData.vectMax(vectVelocity, speedCap); //snap to speed cap to prevent fluttering
+	}
+	
 	underSpeed = oGlobalData.vectLength(vectVelocity) <= speedCap; //tracks if player has control of the mech
 	if (keyMove && underSpeed) //low grip when move inputs allowed
 	{
@@ -36,17 +49,6 @@ updateVectVelocity = function() //handles move input & drag application
 	else //high drag when no input allowed
 	{
 		drag = dragStatic;
-	}
-	
-	vectVelocity = oGlobalData.vectSum(vectVelocity, oGlobalData.vectInvert(oGlobalData.vectScale(vectVelocity, drag))); //apply drag
-	if (oGlobalData.vectLength(vectVelocity) < snapSpeed) //anti fluttering
-	{
-		//vectVelocity = oGlobalData.vectZero;
-	}
-	
-	if (abs(oGlobalData.vectLength(vectVelocity) - speedCap) < snapSpeed && false) //anti fluttering
-	{
-		//vectVelocity = oGlobalData.vectMax(vectVelocity, speedCap); //snap to speed cap to prevent fluttering
 	}
 }
 

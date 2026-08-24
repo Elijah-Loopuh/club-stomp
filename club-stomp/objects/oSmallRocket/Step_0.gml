@@ -1,9 +1,6 @@
-x += vectVelocity[0];
-y += vectVelocity[1];
+event_inherited(); //move and collide
 
 doTracking();
-
-checkCollision();
 
 for (var i = 0; i < 5; i ++)
 {

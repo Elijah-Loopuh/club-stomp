@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sSmokeParticle",
-    "path":"sprites/sSmokeParticle/sSmokeParticle.yy",
+    "name":"sNewSmoke",
+    "path":"sprites/sNewSmoke/sNewSmoke.yy",
   },
   "spriteMaskId":null,
   "visible":true,

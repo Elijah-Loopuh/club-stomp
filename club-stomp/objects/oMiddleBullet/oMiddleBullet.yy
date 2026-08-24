@@ -13,7 +13,10 @@
     "name":"Bullets",
     "path":"folders/Objects/Physical/Bullets.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"oBulletParent",
+    "path":"objects/oBulletParent/oBulletParent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

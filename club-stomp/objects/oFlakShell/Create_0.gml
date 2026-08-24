@@ -6,14 +6,15 @@ setupBullet = function()
 	image_angle += random_range(-spread, spread); //spread
 	vectVelocity = oGlobalData.vectRotate(vectVelocity, -image_angle); //setup vector for direction
 }
+event_inherited();
 
-checkCollision = function()
+checkCollision = function(substeps)
 {
 	if ((instance_place(x, y, oGlobalData.collisionList) || instance_place(x, y, oGlobalData.enemyList)) && tag == "friendly") //wallcheck collision
 	{
 		for (var j = 0; j < 12; j ++) //spawn a bunch of flak
 		{
-			instance_create_layer(x, y, "PlayerThings", oMiddleBullet, {spread : 180, angle : 0, vectVelocity : [20, 0], tag : tag, damage : damage})
+			instance_create_layer(x, y, "PlayerThings", oMiddleBullet, {spread : 180, angle : 0, vectVelocity : [20*8, 0], tag : tag, damage : damage})
 		}
 		instance_destroy(id);
 	}
@@ -21,7 +22,7 @@ checkCollision = function()
 	{
 		for (var j = 0; j < 12; j ++) //spawn a bunch of flak
 		{
-			instance_create_layer(x, y, "PlayerThings", oMiddleBullet, {spread : 180, angle : 0, vectVelocity : [20, 0], tag : tag, damage : damage})
+			instance_create_layer(x, y, "PlayerThings", oMiddleBullet, {spread : 180, angle : 0, vectVelocity : [20*8, 0], tag : tag, damage : damage})
 		}
 		instance_destroy(id);
 	}

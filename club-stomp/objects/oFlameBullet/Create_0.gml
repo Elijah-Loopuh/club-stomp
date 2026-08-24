@@ -6,7 +6,8 @@ setupBullet = function()
 	vectVelocity = oGlobalData.vectRotate(vectVelocity, -image_angle); //setup vector for direction
 	//vectVelocity = oGlobalData.vectSum(vectVelocity, oLegs.vectVelocity); //add player velocity to bullet velocity
 }
-
+event_inherited();
+/*
 checkCollision = function()
 {
 	for (var i = 0; i < 5; i ++)
@@ -28,7 +29,7 @@ checkCollision = function()
 		}
 	}
 }
-
+*/
 setupBullet();
 
 alarm[0] = 60*random_range(1.2, 1.6);

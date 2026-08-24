@@ -30,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"sFunctionCaller",
+    "path":"sprites/sFunctionCaller/sFunctionCaller.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

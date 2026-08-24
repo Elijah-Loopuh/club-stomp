@@ -62,27 +62,29 @@ updateVectorMoveInput = function ()
 
 updateVectVelocity = function() //handles move input & drag application
 {
+
+	
+	vectVelocity = oGlobalData.vectSum(vectVelocity, oGlobalData.vectInvert(oGlobalData.vectClamp(vectVelocity, drag)));
+	if (oGlobalData.vectLength(vectVelocity) < grip)
+	{
+		vectVelocity = oGlobalData.vectZero;
+	}
+	
+	if (abs(oGlobalData.vectLength(vectVelocity) - speedCap) < grip && false)
+	{
+		vectVelocity = oGlobalData.vectMax(vectVelocity, speedCap); //snap to speed cap to prevent fluttering
+	}
+	
 	underSpeed = oGlobalData.vectLength(vectVelocity) <= speedCap; //tracks if player has control of the mech
 	if (keyMove && underSpeed) //low grip when move inputs allowed
 	{
 		drag = dragDynamic;
 		vectVelocity = oGlobalData.vectSum(vectVelocity, oGlobalData.vectScale(vectMoveInput, grip)); //modifies velocity with move input
-		//vectVelocity = oGlobalData.vectMax(vectVelocity, speedCap); //cap speed under normal circumstances
+		vectVelocity = oGlobalData.vectMax(vectVelocity, speedCap); //cap speed under normal circumstances
 	}
 	else //high drag when no input allowed
 	{
 		drag = dragStatic;
-	}
-	
-	vectVelocity = oGlobalData.vectSum(vectVelocity, oGlobalData.vectInvert(oGlobalData.vectScale(vectVelocity, drag)));
-	if (oGlobalData.vectLength(vectVelocity) < snapSpeed)
-	{
-		vectVelocity = oGlobalData.vectZero;
-	}
-	
-	if (abs(oGlobalData.vectLength(vectVelocity) - speedCap) < snapSpeed && false)
-	{
-		//vectVelocity = oGlobalData.vectMax(vectVelocity, speedCap); //snap to speed cap to prevent fluttering
 	}
 }
 
