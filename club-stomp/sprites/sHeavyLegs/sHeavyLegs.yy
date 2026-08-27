@@ -29,8 +29,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Hulls",
-    "path":"folders/Sprites/Physical/Hulls.yy",
+    "name":"Heavy",
+    "path":"folders/Sprites/Physical/Hulls/Heavy.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

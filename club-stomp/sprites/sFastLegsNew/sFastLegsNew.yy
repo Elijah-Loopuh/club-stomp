@@ -29,8 +29,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Hulls",
-    "path":"folders/Sprites/Physical/Hulls.yy",
+    "name":"Fast",
+    "path":"folders/Sprites/Physical/Hulls/Fast.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

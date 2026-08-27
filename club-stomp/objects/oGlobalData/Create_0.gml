@@ -61,7 +61,14 @@ randomise();
 				dashPower : 80*8, //dash speed
 				dashCooldownMaster : 60*0.35, //# of frames between dashes
 				dashDurationMaster : 60*0.15,
-				sprite : sDefaultLegs
+				sprite : 
+				{
+					sStill : sDefaultLegs, 
+					sForward : sDefaultLegsForward, 
+					sRight : sDefaultLegsRight, 
+					sBack : sDefaultLegsBack, 
+					sLeft : sDefaultLegsLeft, 
+				}, 
 			}, 
 			{ //default body
 				name : "default body", 

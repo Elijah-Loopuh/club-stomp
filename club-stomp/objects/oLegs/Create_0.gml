@@ -1,6 +1,6 @@
 
 id.depth = 750;
-sprite_index = sprite;
+sprite_index = sprite.sStill;
 angleStore = 0;
 snapSpeed = 0.5; //threshold to snap to a speed value
 dashDuration = 0;
@@ -62,8 +62,6 @@ updateVectorMoveInput = function ()
 
 updateVectVelocity = function() //handles move input & drag application
 {
-
-	
 	vectVelocity = oGlobalData.vectSum(vectVelocity, oGlobalData.vectInvert(oGlobalData.vectClamp(vectVelocity, drag)));
 	if (oGlobalData.vectLength(vectVelocity) < grip)
 	{
@@ -254,13 +252,32 @@ handleSprint = function()
 	}
 }
 
-handleAnimation = function()
+handleAnimation = function() //NOT WORKING PROPERLY ATM
 {
-	image_speed = oGlobalData.vectLength(vectVelocity) * animationSpeed;
-	if (oGlobalData.vectLength(vectVelocity) == 0)
+	angle = oGlobalData.vectAngle(oGlobalData.vectRotate(vectVelocity, -image_angle)); //gets movement direction relative to facing angle
+
+	if (angle >= 315 || angle <= 45)
 	{
-		image_index = 0;
+		sprite_index = sprite.sForward;
 	}
+	if (angle >= 45 && angle <= 135)
+	{
+		sprite_index = sprite.sLeft;
+	}
+	if (angle >= 135 && angle <= 225)
+	{
+		sprite_index = sprite.sBack;
+	}
+	if (angle >= 225 && angle <= 315)
+	{
+		sprite_index = sprite.sRight;
+	}
+	if (angle == -1) //if not moving
+	{
+		sprite_index = sprite.sStill;
+	}
+	
+	show_debug_message(angle);
 }
 
 move = function() //moves on x & y axes
