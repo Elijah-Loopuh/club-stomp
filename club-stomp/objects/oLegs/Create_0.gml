@@ -254,7 +254,10 @@ handleSprint = function()
 
 handleAnimation = function() //NOT WORKING PROPERLY ATM
 {
-	angle = oGlobalData.vectAngle(oGlobalData.vectRotate(vectVelocity, -image_angle)); //gets movement direction relative to facing angle
+	vectVelocityFixed = [0 ,0]; //inverts y axis to fix animation handling
+	vectVelocityFixed[0] = vectVelocity[0];
+	vectVelocityFixed[1] = -vectVelocity[1];
+	angle = oGlobalData.vectAngle(oGlobalData.vectRotate(vectVelocityFixed, -image_angle)); //gets movement direction relative to facing angle
 
 	if (angle >= 315 || angle <= 45)
 	{
@@ -278,6 +281,7 @@ handleAnimation = function() //NOT WORKING PROPERLY ATM
 	}
 	
 	show_debug_message(angle);
+	//show_debug_message(-image_angle);
 }
 
 move = function() //moves on x & y axes
