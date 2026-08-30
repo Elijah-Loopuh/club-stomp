@@ -11,6 +11,7 @@ vectPos = [0, 0];
 		{
 			vectPos = [x, y];
 			
+			
 			distance = oGlobalData.vectLength(oGlobalData.vectSum(vectPos, oGlobalData.vectInvert(oLockBox.vectPos))); //distance from gun to target
 			
 			lead = oGlobalData.vectScale(oLockBox.vectVelocity, distance/oGlobalData.vectLength(vectVelocity)); //displacement from target to aim point

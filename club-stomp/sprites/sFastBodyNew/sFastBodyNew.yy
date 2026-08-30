@@ -27,7 +27,7 @@
   "origin":4,
   "parent":{
     "name":"Fast",
-    "path":"folders/Sprites/Physical/Hulls/Fast.yy",
+    "path":"folders/Sprites/old/Fast.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

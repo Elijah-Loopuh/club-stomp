@@ -89,10 +89,8 @@ updateVectVelocity = function() //handles move input & drag application
 setAngle = function(angleTarget = -oGlobalData.vectAngle(vectVelocity)) //defaults to pointing toward direction of travel
 {
 	angleStore = image_angle;
-	if (oGlobalData.vectAngle(vectVelocity) != -1) //valid angle target
-	{
-		image_angle = angleTarget;
-	}
+	image_angle = angleTarget;
+
 	if (checkCollision() != 0) //if turn would put inside wall, reset
 	{
 		image_angle = angleStore;
@@ -108,6 +106,7 @@ rotateToMouse = function()
 
 checkCollision = function() //checks for collisions without actually handling them. 0 = none, 1 = x axis, 2 = y axis, 3 = both axes.
 {
+	
 	wallCheckX = instance_place(x + vectVelocity[0], y, oGlobalData.collisionList);
 	wallCheckY = instance_place(x, y + vectVelocity[1], oGlobalData.collisionList);
 	output = 0;
@@ -280,7 +279,7 @@ handleAnimation = function() //NOT WORKING PROPERLY ATM
 		sprite_index = sprite.sStill;
 	}
 	
-	show_debug_message(angle);
+	//show_debug_message(angle);
 	//show_debug_message(-image_angle);
 }
 

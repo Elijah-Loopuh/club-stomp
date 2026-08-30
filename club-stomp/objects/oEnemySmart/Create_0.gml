@@ -14,7 +14,7 @@ shotgunData = //weapon stats for the enemy
 //enemy movement stats
 regularGrip = 0.5*8; //regular grip
 regularSpeedCap = 20*8;
-dragStatic = 0.10; //drag when no buttons held
+dragStatic = 10*8; //drag when no buttons held
 dragDynamic = 0.0; //drag when movement buttons are held
 hp = 100;
 

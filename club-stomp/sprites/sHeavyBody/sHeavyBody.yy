@@ -26,7 +26,7 @@
   "origin":4,
   "parent":{
     "name":"Heavy",
-    "path":"folders/Sprites/Physical/Hulls/Heavy.yy",
+    "path":"folders/Sprites/old/Heavy.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

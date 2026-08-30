@@ -63,24 +63,24 @@ randomise();
 				dashDurationMaster : 60*0.15,
 				sprite : 
 				{
-					sStill : sDefaultLegs, 
-					sForward : sDefaultLegsForward, 
-					sRight : sDefaultLegsRight, 
-					sBack : sDefaultLegsBack, 
-					sLeft : sDefaultLegsLeft, 
+					sStill : sZoeyLegs, 
+					sForward : sZoeyLegsForward, 
+					sRight : sZoeyLegsRight, 
+					sBack : sZoeyLegsBack, 
+					sLeft : sZoeyLegsLeft, 
 				}, 
 			}, 
 			{ //default body
 				name : "default body", 
 				main : [0, -1, -1, -1, -1], //0 = available slot, -1 = unavailable, string text = assigned to that equipment
-				aux : [0, -1, -1, -1, -1], 
+				aux : [-1, -1, -1, -1, -1], 
 				def : [-1, -1, -1, -1, -1], 
-				sprite : sDefaultBody, 
+				sprite : sZoeyBody, 
 				mainOffsets: [[16*8, 0]], //stores coordinates of weapon mounts relative to sprite origin as vectors, idicies match with slot indicies
-				auxOffsets: [[-11*8, -7*8], [-11*8, 7*8]], 
-				defOffsets: [[-20*8, 0]],
+				auxOffsets: [[]], 
+				defOffsets: [[]],
 				hpMax : 100, 
-				gimmick : "none", 
+				gimmick : "tough", 
 			}, 
 			
 			{ //fast leg
@@ -137,28 +137,35 @@ randomise();
 			
 			{ //heavy leg
 				name : "heavy leg", 
-				regularGrip : 0.5*8, //regular grip
-				sprintGrip : 0.35*8,  //lower grip for sprinting
-				regularSpeedCap : 12*8,
-				sprintSpeedCap : 25*8,
+				regularGrip : 3*8, //regular grip
+				sprintGrip : 3*8,  //lower grip for sprinting
+				regularSpeedCap : 20*8,
+				sprintSpeedCap : 40*8,
 				dragStatic : 5, //drag when no buttons held
 				dragDynamic : 0.0,//drag when movement buttons are held
 				dashPower : 25*8, //dash speed
 				dashCooldownMaster : 60*2.0, //# of frames between dash initiations
 				dashDurationMaster : 60*0.75,
-				sprite : sHeavyLegs
+				sprite : 
+				{
+					sStill : sCameronLegs, 
+					sForward : sCameronLegsForward, 
+					sRight : sCameronLegsRight, 
+					sBack : sCameronLegsBack, 
+					sLeft : sCameronLegsLeft, 
+				}, 
 			}, 
 			{ //heavy body
 				name : "heavy body", 
-				main : [0, 0, -1, -1, -1], //0 = available slot, -1 = unavailable, string text = assigned to that equipment
-				aux : [0, 0, 0, -1, -1], 
-				def : [0, 0, -1, -1, -1], 
-				sprite : sHeavyBody, 
-				mainOffsets: [[41*8, -24*8], [41*8, 24*8]], //stores coordinates of weapon mounts relative to sprite origin as vectors, idicies match with slot indicies
-				auxOffsets: [[0, -20*8], [0, 20*8], [20*8, 0]], 
-				defOffsets: [[-41*8, 14*8], [-41*8, -14*8]],
-				hpMax : 200, 
-				gimmick : "none", 
+				main : [0, -1, -1, -1, -1], //0 = available slot, -1 = unavailable, string text = assigned to that equipment
+				aux : [-1, -1, -1, -1, -1], 
+				def : [-1, -1, -1, -1, -1], 
+				sprite : sCameronBody, 
+				mainOffsets: [[41*8, -24*8]], //stores coordinates of weapon mounts relative to sprite origin as vectors, idicies match with slot indicies
+				auxOffsets: [[]], 
+				defOffsets: [[]],
+				hpMax : 400, 
+				gimmick : "punch", 
 			},
 			
 			{ //middle mg

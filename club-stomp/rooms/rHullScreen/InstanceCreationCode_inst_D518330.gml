@@ -1,4 +1,4 @@
 body = "default body";
 legs = "default leg";
 
-sprite = sDefaultLegs;
+sprite = sZoeyIcon;

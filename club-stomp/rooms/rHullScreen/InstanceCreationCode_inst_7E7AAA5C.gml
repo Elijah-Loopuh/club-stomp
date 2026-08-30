@@ -1,4 +1,4 @@
-body = "fast body";
-legs = "fast leg";
+body = "heavy body";
+legs = "heavy leg";
 
-sprite = sFastLegsNew;
+sprite = sCameronIcon;

@@ -27,7 +27,7 @@
   "origin":4,
   "parent":{
     "name":"Stealth",
-    "path":"folders/Sprites/Physical/Hulls/Stealth.yy",
+    "path":"folders/Sprites/old/Stealth.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

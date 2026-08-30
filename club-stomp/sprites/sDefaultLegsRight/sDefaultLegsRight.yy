@@ -27,7 +27,7 @@
   "origin":4,
   "parent":{
     "name":"Default",
-    "path":"folders/Sprites/Physical/Hulls/Default.yy",
+    "path":"folders/Sprites/old/Default.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
