@@ -1,4 +1,4 @@
-body = "stealth body";
-legs = "stealth leg";
+body = "fast body";
+legs = "fast leg";
 
-sprite = sStealthLegs;
+sprite = sMariIcon;

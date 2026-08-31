@@ -58,7 +58,7 @@ hp = hpMax;
 		}
 	}
 	
-	if (gimmick == "punch")
+	if (gimmick == "punch") //create punching "gun" for cameron
 	{
 		gunData = 
 		{
@@ -71,6 +71,25 @@ hp = hpMax;
 				vectVelocity : [100, 0], //projectile velocity
 				tag : "friendly", //used by bullets to decide who to hurt
 				damage : 8, 
+				critMultiplier : 2, 
+				fireKey : mb_right, 
+		}
+		instance_create_layer(x, y, "Instances", oGun, gunData)
+	}
+	
+	if (gimmick == "bombs") //create grenade burst gun for mari
+	{
+		gunData = 
+		{
+				fireDelayMaster : 8 * 60, //frames between shots = 1 / (RPM / 60)
+				projectile : oGrenadeCluster, //single bullet projectile
+				projectileOffest : [0, 0], //not used
+				spread : 0, //not used for this gun
+				sprite : sNullSprite, 
+				mountOffset : [0, 0], //not used here
+				vectVelocity : [100, 0], //projectile velocity
+				tag : "friendly", //used by bullets to decide who to hurt
+				damage : 10, 
 				critMultiplier : 2, 
 				fireKey : mb_right, 
 		}

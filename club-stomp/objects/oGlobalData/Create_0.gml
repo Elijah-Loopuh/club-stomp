@@ -94,19 +94,26 @@ randomise();
 				dashPower : 75*8, //dash speed
 				dashCooldownMaster : 60*0.35, //# of frames between dash initiations
 				dashDurationMaster : 60*0.25,
-				sprite : sFastLegsNew
+				sprite : 
+				{
+					sStill : sMariLegs, 
+					sForward : sMariLegsForward, 
+					sRight : sMariLegsRight, 
+					sBack : sMariLegsBack, 
+					sLeft : sMariLegsLeft, 
+				}, 
 			}, 
 			{ //fast body
 				name : "fast body", 
-				main : [-1, -1, -1, -1, -1], //0 = available slot, -1 = unavailable, string text = assigned to that equipment
-				aux : [0, -1, -1, -1, -1], 
-				def : [0, -1, -1, -1, -1], 
-				sprite : sFastBodyNew, 
-				mainOffsets: [[]], //stores coordinates of weapon mounts relative to sprite origin as vectors, idicies match with slot indicies
-				auxOffsets: [[-24*8, -11*8]], 
-				defOffsets: [[-24*8, 11*8]],
-				hpMax : 50, 
-				gimmick : "none", 
+				main : [0, -1, -1, -1, -1], //0 = available slot, -1 = unavailable, string text = assigned to that equipment
+				aux : [-1, -1, -1, -1, -1], 
+				def : [-1, -1, -1, -1, -1], 
+				sprite : sMariBody, 
+				mainOffsets: [[0, 0]], //stores coordinates of weapon mounts relative to sprite origin as vectors, idicies match with slot indicies
+				auxOffsets: [[]], 
+				defOffsets: [[]],
+				hpMax : 75, 
+				gimmick : "bombs", 
 			}, 
 			
 			{ //stealth leg
