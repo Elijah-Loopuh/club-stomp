@@ -1,5 +1,5 @@
 
 if (room == rTestingRoom)
 {
-	oGlobalData.forcePlaySong(mDemoTrack1, 100);
+	oGlobalData.forcePlaySong(m120bpmTest, 100);
 }

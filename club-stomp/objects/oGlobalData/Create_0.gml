@@ -36,10 +36,9 @@ randomise();
 		
 		songList = //holds data for music crit system, like song bpm
 		[
-			{asset : mMetronome, herz : 2}, 
+			{asset : m120bpmTest, herz : 2}, 
 			{asset : mDemoTrack1, herz : 7/3}, 
-			{asset : mMetronome, herz : 7/3}, 
-			{asset : mMetronome, herz : 7/3}, 
+			{asset : mDemoTrack2, herz : 7/3}, 
 		];
 
 		currentSlotData = //stores data used to put guns in slots for the player
@@ -789,7 +788,8 @@ randomise();
 					currentHerz = songList[i].herz; 
 				}
 			}
-			audio_play_sound(songId, priority, true);
+			audio_play_sound(songId, priority, false);
 			oMusicPlayer.currentTime = 0; //start crit clock from zero
+			show_debug_message(currentHerz);
 		}
 }

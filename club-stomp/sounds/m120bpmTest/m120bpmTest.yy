@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"mMetronome",
+  "%Name":"m120bpmTest",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":41.474648,
+  "duration":27.500296,
   "exportDir":"",
-  "name":"mMetronome",
+  "name":"m120bpmTest",
   "parent":{
     "name":"Sounds",
     "path":"folders/Sounds.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"mMetronome.mp3",
+  "soundFile":"m120bpmTest.mp3",
   "volume":1.0,
 }

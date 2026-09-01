@@ -1,4 +1,4 @@
 if (oGlobalData.isCrit)
 {
-	draw_self();
+	//draw_self();
 }
