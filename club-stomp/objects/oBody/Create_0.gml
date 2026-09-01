@@ -70,7 +70,7 @@ hp = hpMax;
 				mountOffset : [0, 0], //filled in when gun is assigned to a slot. placeholder
 				vectVelocity : [30*8, 0], //projectile velocity
 				tag : "friendly", //used by bullets to decide who to hurt
-				damage : 0, 
+				damage : 12, 
 				critMultiplier : 2, 
 				fireKey : mb_right, 
 				auto : true,
