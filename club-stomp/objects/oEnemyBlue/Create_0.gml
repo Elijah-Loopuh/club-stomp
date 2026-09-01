@@ -3,7 +3,7 @@ event_inherited();
 //hard set movement params
 regularGrip = 0.75*8; //regular grip
 regularSpeedCap = 15*8;
-dragStatic = 0.15; //drag when no buttons held
+dragStatic = 2*8; //drag when no buttons held
 dragDynamic = 0.0; //drag when movement buttons are held
 hp = 100;
 

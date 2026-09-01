@@ -85,15 +85,15 @@ randomise();
 			
 			{ //fast leg
 				name : "fast leg", 
-				regularGrip : 5.0*8, //regular grip
-				sprintGrip : 3.0*8,  //lower grip for sprinting
-				regularSpeedCap : 30*8,
-				sprintSpeedCap : 50*8,
-				dragStatic : 5*8, //drag when no buttons held
+				regularGrip : 3.0*8, //regular grip
+				sprintGrip : 1.0*8,  //lower grip for sprinting
+				regularSpeedCap : 20*8,
+				sprintSpeedCap : 40*8,
+				dragStatic : 3*8, //drag when no buttons held
 				dragDynamic : 0.0,//drag when movement buttons are held
-				dashPower : 75*8, //dash speed
-				dashCooldownMaster : 60*0.35, //# of frames between dash initiations
-				dashDurationMaster : 60*0.25,
+				dashPower : 60*8, //dash speed
+				dashCooldownMaster : 60*0.45, //# of frames between dash initiations
+				dashDurationMaster : 60*0.35,
 				sprite : 
 				{
 					sStill : sMariLegs, 
@@ -118,28 +118,35 @@ randomise();
 			
 			{ //stealth leg
 				name : "stealth leg", 
-				regularGrip : 0.65*8, //regular grip
-				sprintGrip : 0.5*8,  //lower grip for sprinting
-				regularSpeedCap : 15*8,
-				sprintSpeedCap : 25*8,
-				dragStatic : 5, //drag is now applied the same way as grip is
+				regularGrip : 5.0*8, //regular grip
+				sprintGrip : 3.0*8,  //lower grip for sprinting
+				regularSpeedCap : 30*8,
+				sprintSpeedCap : 50*8,
+				dragStatic : 5*8, //drag when no buttons held
 				dragDynamic : 0.0,//drag when movement buttons are held
-				dashPower : 35*8, //dash speed
-				dashCooldownMaster : 60*1.25, //# of frames between dash initiations
-				dashDurationMaster : 60*0.20,
-				sprite : sStealthLegs
+				dashPower : 75*8, //dash speed
+				dashCooldownMaster : 60*0.35, //# of frames between dash initiations
+				dashDurationMaster : 60*0.25,
+				sprite : 
+				{
+					sStill : sZachLegs, 
+					sForward : sZachLegsForward, 
+					sRight : sZachLegsRight, 
+					sBack : sZachLegsBack, 
+					sLeft : sZachLegsLeft, 
+				}, 
 			}, 
 			{ //stealth body
 				name : "stealth body", 
 				main : [0, -1, -1, -1, -1], //0 = available slot, -1 = unavailable, string text = assigned to that equipment
-				aux : [0, -1, -1, -1, -1], 
-				def : [0, -1, -1, -1, -1], 
-				sprite : sStealthBody, 
+				aux : [-1, -1, -1, -1, -1], 
+				def : [-1, -1, -1, -1, -1], 
+				sprite : sZachBody, 
 				mainOffsets: [[0, -14*8]], //stores coordinates of weapon mounts relative to sprite origin as vectors, idicies match with slot indicies
-				auxOffsets: [[0, 14*8]], 
-				defOffsets: [[-14*8, 0]],
+				auxOffsets: [[]], 
+				defOffsets: [[]],
 				hpMax : 75, 
-				gimmick : "stealth", 
+				gimmick : "grapple", 
 			},
 			
 			{ //heavy leg
@@ -188,6 +195,7 @@ randomise();
 				tag : "friendly", //used by bullets to decide who to hurt
 				damage : 8, 
 				critMultiplier : 2, 
+				auto : true, 
 			}, 
 			{ //middle rifle
 				name : "Sniper Rifle", //used for easier handling
@@ -202,6 +210,7 @@ randomise();
 				tag : "friendly", 
 				damage : 25, 
 				critMultiplier : 2, 
+				auto : false, 
 			},
 			{ //smallRPG
 				name : "Missile Launcher", //used for easier handling
@@ -216,6 +225,7 @@ randomise();
 				tag : "friendly", 
 				damage : 50, 
 				critMultiplier : 2, 
+				auto : false, 
 			},
 			
 			{ //shotgun
@@ -231,6 +241,7 @@ randomise();
 				tag : "friendly", 
 				damage : 3, 
 				critMultiplier : 2, 
+				auto : false, 
 			}, 
 			{ //flamethrower
 				name : "Flamethrower", //used for easier handling
@@ -245,6 +256,7 @@ randomise();
 				tag : "friendly", 
 				damage : 1, 
 				critMultiplier : 2, 
+				auto : true, 
 			}, 
 			{ //flak cannon
 				name : "Grenade Launcher", //used for easier handling
@@ -259,6 +271,7 @@ randomise();
 				tag : "friendly", 
 				damage : 5, 
 				critMultiplier : 2, 
+				auto : true,
 			}, 
 			{ //rotary gun
 				name : "Minigun", //used for easier handling
@@ -273,6 +286,7 @@ randomise();
 				tag : "friendly", 
 				damage : 3, 
 				critMultiplier : 2, 
+				auto : true,
 			}, 
 			{ //quad rocket
 				name : "Multi Missile", //used for easier handling
@@ -287,6 +301,7 @@ randomise();
 				tag : "friendly", 
 				damage : 25, 
 				critMultiplier : 2, 
+				auto : false,
 			}, 
 		];
 
@@ -684,23 +699,45 @@ randomise();
 		    }
 		}
 		
-		getWepInputs = function(input) //returns true if the supplied key is held down, used to manage weapon groups
+		getWepInputs = function(input, auto) //returns true if the supplied key is held down, used to manage weapon groups
 		{
-			if (input = mb_left)
+			if (auto == true)
 			{
-				return mouse_check_button( mb_left );
+				if (input = mb_left)
+				{
+					return mouse_check_button( mb_left );
+				}
+				else if (input = mb_right)
+				{
+					return mouse_check_button( mb_right );
+				}
+				else if (input = ord( "Q" ))
+				{
+					return keyboard_check(ord("Q"));
+				}
+				else if (input = ord( "E" ))
+				{
+					return keyboard_check(ord("E"));
+				}
 			}
-			else if (input = mb_right)
+			else
 			{
-				return mouse_check_button( mb_right );
-			}
-			else if (input = ord( "Q" ))
-			{
-				return keyboard_check(ord("Q"));
-			}
-			else if (input = ord( "E" ))
-			{
-				return keyboard_check(ord("E"));
+				if (input = mb_left)
+				{
+					return mouse_check_button_pressed( mb_left );
+				}
+				else if (input = mb_right)
+				{
+					return mouse_check_button_pressed( mb_right );
+				}
+				else if (input = ord( "Q" ))
+				{
+					return keyboard_check_pressed(ord("Q"));
+				}
+				else if (input = ord( "E" ))
+				{
+					return keyboard_check_pressed(ord("E"));
+				}
 			}
 			show_error("oGlobalData.getWepInputs couldn't find input: " + input, true); //abort if invalid program
 		}

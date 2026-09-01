@@ -68,13 +68,14 @@ hp = hpMax;
 				spread : 0, //spread in degrees
 				sprite : sNullSprite, 
 				mountOffset : [0, 0], //filled in when gun is assigned to a slot. placeholder
-				vectVelocity : [100, 0], //projectile velocity
+				vectVelocity : [30*8, 0], //projectile velocity
 				tag : "friendly", //used by bullets to decide who to hurt
-				damage : 8, 
+				damage : 0, 
 				critMultiplier : 2, 
 				fireKey : mb_right, 
+				auto : true,
 		}
-		instance_create_layer(x, y, "Instances", oGun, gunData)
+		instance_create_layer(x, y, "Instances", oGun, gunData);
 	}
 	
 	if (gimmick == "bombs") //create grenade burst gun for mari
@@ -92,6 +93,27 @@ hp = hpMax;
 				damage : 10, 
 				critMultiplier : 2, 
 				fireKey : mb_right, 
+				auto : false,
 		}
-		instance_create_layer(x, y, "Instances", oGun, gunData)
+		instance_create_layer(x, y, "Instances", oGun, gunData);
+	}
+	
+	if (gimmick == "grapple") //create grenade burst gun for mari
+	{
+		gunData = 
+		{
+				fireDelayMaster : 0.1 * 60, //frames between shots = 1 / (RPM / 60)
+				projectile : oGrapplingHook, //single bullet projectile
+				projectileOffest : [0, 0], //not used
+				spread : 0, //not used for this gun
+				sprite : sNullSprite, 
+				mountOffset : [0, 0], //not used here
+				vectVelocity : [300*8, 0], //projectile velocity
+				tag : "friendly", //used by bullets to decide who to hurt
+				damage : 0, 
+				critMultiplier : 0, 
+				fireKey : mb_right, 
+				auto : false,
+		}
+		instance_create_layer(x, y, "Instances", oGun, gunData);
 	}

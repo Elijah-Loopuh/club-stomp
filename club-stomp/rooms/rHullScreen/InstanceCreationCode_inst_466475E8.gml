@@ -1,4 +1,4 @@
-body = "heavy body";
-legs = "heavy leg";
+body = "stealth body";
+legs = "stealth leg";
 
-sprite = sHeavyLegs;
+sprite = sZachIcon;

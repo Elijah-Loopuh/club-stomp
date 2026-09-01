@@ -18,5 +18,5 @@ handleAnimation();
 
 move();
 
-/*
-show_debug_message(oGlobalData.vectLength(vectVelocity));
+
+//show_debug_message(drag);

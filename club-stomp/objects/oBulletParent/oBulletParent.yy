@@ -9,8 +9,8 @@
   "name":"oBulletParent",
   "overriddenProperties":[],
   "parent":{
-    "name":"Bullets",
-    "path":"folders/Objects/Physical/Bullets.yy",
+    "name":"Misc",
+    "path":"folders/Objects/Physical/Misc.yy",
   },
   "parentObjectId":null,
   "persistent":false,

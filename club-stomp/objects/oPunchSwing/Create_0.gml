@@ -1,3 +1,6 @@
+
+hasHit = [];
+
 checkCollision = function(substeps) //use more substeps for faster projectiles
 {
 	for (var i = 0; i <= substeps; i ++)
@@ -5,14 +8,16 @@ checkCollision = function(substeps) //use more substeps for faster projectiles
 		if (place_meeting(x + vectVelocity[0]*i/substeps, y + vectVelocity[1]*i/substeps, oGlobalData.enemyList) && tag == "friendly") //if hitting enemy
 		{
 			collided = instance_place(x + vectVelocity[0]*i/substeps, y + vectVelocity[1]*i/substeps, oGlobalData.enemyList);
-			collided.push(vectVelocity);
-			collided.takeDamage(damage); //deal damage
-			mask_index = sNullSprite;
+			if (!array_contains(hasHit, collided)) //only allow each enemy to be hit once
+			{
+				collided.push(vectVelocity);
+				collided.takeDamage(damage); //deal damage
+				hasHit[array_length(hasHit)] = collided; //add enemy to list of already hit enemies
+			}
 		}
 		if (place_meeting(x + vectVelocity[0]*i/substeps, y + vectVelocity[1]*i/substeps, oGlobalData.playerList) && tag == "enemy") //if hitting enemy
 		{
 			oBody.takeDamage(damage);
-			mask_index = sNullSprite;
 		}
 	}
 }
@@ -30,6 +35,4 @@ setupBullet = function()
 
 setupBullet();
 
-alarm[0] = 60*0.25;
-
-show_debug_message(vectVelocity);
+alarm[0] = 60*0.25; //duration the punch exists for 

@@ -28,13 +28,13 @@ updateVectVelocity = function() //handles move input & drag application
 {
 
 	
-	vectVelocity = oGlobalData.vectSum(vectVelocity, oGlobalData.vectInvert(oGlobalData.vectClamp(vectVelocity, drag)));
+	
 	if (oGlobalData.vectLength(vectVelocity) < grip)
 	{
 		vectVelocity = oGlobalData.vectZero;
 	}
 	
-	if (abs(oGlobalData.vectLength(vectVelocity) - speedCap) < grip && false)
+	if (abs(oGlobalData.vectLength(vectVelocity) - speedCap) < grip && false) //deactivated
 	{
 		vectVelocity = oGlobalData.vectMax(vectVelocity, speedCap); //snap to speed cap to prevent fluttering
 	}
@@ -50,6 +50,7 @@ updateVectVelocity = function() //handles move input & drag application
 	{
 		drag = dragStatic;
 	}
+	vectVelocity = oGlobalData.vectSum(vectVelocity, oGlobalData.vectInvert(oGlobalData.vectClamp(vectVelocity, drag)));
 }
 
 setAngle = function(angleTarget = -oGlobalData.vectAngle(vectVelocity))

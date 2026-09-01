@@ -62,7 +62,7 @@ updateVectorMoveInput = function ()
 
 updateVectVelocity = function() //handles move input & drag application
 {
-	vectVelocity = oGlobalData.vectSum(vectVelocity, oGlobalData.vectInvert(oGlobalData.vectClamp(vectVelocity, drag)));
+	
 	if (oGlobalData.vectLength(vectVelocity) < grip)
 	{
 		vectVelocity = oGlobalData.vectZero;
@@ -84,6 +84,7 @@ updateVectVelocity = function() //handles move input & drag application
 	{
 		drag = dragStatic;
 	}
+	vectVelocity = oGlobalData.vectSum(vectVelocity, oGlobalData.vectInvert(oGlobalData.vectClamp(vectVelocity, drag)));
 }
 
 setAngle = function(angleTarget = -oGlobalData.vectAngle(vectVelocity)) //defaults to pointing toward direction of travel
@@ -287,4 +288,9 @@ move = function() //moves on x & y axes
 {
 	x += vectVelocity[0];
 	y += vectVelocity[1];
+}
+
+push = function(vect, scalar)
+{
+	vectVelocity = oGlobalData.vectClamp(vect, scalar); //slide towards vect at speedcap 
 }

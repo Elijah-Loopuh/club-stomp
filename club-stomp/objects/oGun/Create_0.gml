@@ -50,7 +50,7 @@ vectPos = [0, 0];
 			}
 
 			
-			if (oGlobalData.getWepInputs(fireKey) && fireDelayTracker <= 0) //shoot bullets
+			if (oGlobalData.getWepInputs(fireKey, auto) && fireDelayTracker <= 0) //shoot bullets
 			{
 				if (oGlobalData.isCrit)
 				{

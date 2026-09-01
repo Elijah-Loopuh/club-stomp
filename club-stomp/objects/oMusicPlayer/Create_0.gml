@@ -3,5 +3,6 @@
 */
 
 currentTime = 0; //uses delta time to always tick at 120 bpm
-id.depth = 16001; //too deep to be drawn
+critThresh = 0.2; //length of time in seconds that you can crit per beat. centered on beat
 
+id.depth = 16001; //too deep to be drawn

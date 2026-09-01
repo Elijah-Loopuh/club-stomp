@@ -12,3 +12,4 @@ updateVectorMoveInput();
 event_inherited(); //bundled movement
 
 doFireControl();
+

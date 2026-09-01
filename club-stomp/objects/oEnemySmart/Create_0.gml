@@ -14,13 +14,13 @@ shotgunData = //weapon stats for the enemy
 //enemy movement stats
 regularGrip = 0.5*8; //regular grip
 regularSpeedCap = 20*8;
-dragStatic = 10*8; //drag when no buttons held
-dragDynamic = 0.0; //drag when movement buttons are held
+dragStatic = 0.5*8; //drag when no buttons held
+dragDynamic = 0; //drag when movement buttons are held
 hp = 100;
 
 //ai control variables
 standoff = 1000*8; //distance the cycler will hold from player
-tolerance = 100*8; //distance from standoff where the enemy won't correct it's distance
+tolerance = 300*8; //distance from standoff where the enemy won't correct it's distance
 attackCooldownMaster = 60*1.5; //frames between attacks
 attackCooldown = attackCooldownMaster;
 

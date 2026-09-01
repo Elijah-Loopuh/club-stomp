@@ -9,8 +9,8 @@
   "name":"oEnemyParent",
   "overriddenProperties":[],
   "parent":{
-    "name":"Enemy",
-    "path":"folders/Objects/Physical/Enemy.yy",
+    "name":"Misc",
+    "path":"folders/Objects/Physical/Misc.yy",
   },
   "parentObjectId":{
     "name":"oMoverParent",
