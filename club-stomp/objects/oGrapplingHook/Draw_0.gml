@@ -1,7 +1,7 @@
 draw_self();
 
 vectPos = [x, y];
-vectToPlayer = oGlobalData.vectSum(oGlobalData.vectInvert(vectPos), oLegs.vectPos);
+vectToPlayer = oGlobalData.vectSum(oGlobalData.vectInvert(vectPos), oGlobalData.vectSum(oLegs.vectPos, oLegs.vectVelocity));
 
 for (var i = 0; i < oGlobalData.vectLength(vectToPlayer) / chainSpacing; i ++)
 {

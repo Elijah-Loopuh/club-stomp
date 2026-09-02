@@ -85,7 +85,7 @@ randomise();
 			{ //fast leg
 				name : "fast leg", 
 				regularGrip : 3.0*8, //regular grip
-				sprintGrip : 1.0*8,  //lower grip for sprinting
+				sprintGrip : 2.0*8,  //lower grip for sprinting
 				regularSpeedCap : 20*8,
 				sprintSpeedCap : 40*8,
 				dragStatic : 3*8, //drag when no buttons held
@@ -119,8 +119,8 @@ randomise();
 				name : "stealth leg", 
 				regularGrip : 5.0*8, //regular grip
 				sprintGrip : 3.0*8,  //lower grip for sprinting
-				regularSpeedCap : 30*8,
-				sprintSpeedCap : 50*8,
+				regularSpeedCap : 20*8,
+				sprintSpeedCap : 35*8,
 				dragStatic : 5*8, //drag when no buttons held
 				dragDynamic : 0.0,//drag when movement buttons are held
 				dashPower : 75*8, //dash speed

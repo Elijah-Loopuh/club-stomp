@@ -9,8 +9,8 @@
   "name":"oWallMarker",
   "overriddenProperties":[],
   "parent":{
-    "name":"Technical",
-    "path":"folders/Objects/Technical.yy",
+    "name":"Misc",
+    "path":"folders/Objects/Physical/Misc.yy",
   },
   "parentObjectId":null,
   "persistent":false,
