@@ -245,15 +245,15 @@ randomise();
 			{ //flamethrower
 				name : "Flamethrower", //used for easier handling
 				slotType : "main", //used to figure out slot type 
-				fireDelayMaster : 0.01 * 60, //frames between shots = 1 / (RPM / 60)
-				projectile : oFlameBullet, //single bullet projectile
+				fireDelayMaster : 0.25 * 60, //frames between shots = 1 / (RPM / 60)
+				projectile : oFlameBurst, //single bullet projectile
 				projectileOffest : [37*8, 0], //pixel offset from sprite origin
-				spread : 10, //spread in degrees
+				spread : 2, //spread in degrees
 				sprite : sFlameThrower, 
 				mountOffset : [0, 0], //filled in when gun is assigned to a slot. placeholder
-				vectVelocity : [18*8, 0], //projectile velocity 
+				vectVelocity : [25*8, 0], //projectile velocity 
 				tag : "friendly", 
-				damage : 1, 
+				damage : 2, 
 				critMultiplier : 2, 
 				auto : true, 
 			}, 
@@ -266,7 +266,7 @@ randomise();
 				spread : 15, //spread in degrees
 				sprite : sFlakCannon, 
 				mountOffset : [0, 0], //filled in when gun is assigned to a slot. placeholder
-				vectVelocity : [35*8, 0],  //projectile velocity 
+				vectVelocity : [50*8, 0],  //projectile velocity 
 				tag : "friendly", 
 				damage : 5, 
 				critMultiplier : 2, 
@@ -305,16 +305,20 @@ randomise();
 		];
 
 		
-		equippedLegs = "default leg"; //stores the name of frame peices equipped
-		equippedBody = "default body";
 		
-		vectZero = [0, 0]; //used to set other stuff to
+		//misc
+		{
+			equippedLegs = "default leg"; //stores the name of frame peices equipped
+			equippedBody = "default body";
 		
-		frameCounter = 0;
+			vectZero = [0, 0]; //used to set other stuff to
 		
-		currentHerz = 2; //default value, filled in when a song is played
+			frameCounter = 0;
 		
-		isCrit = false; //determines if player attacks will crit 
+			currentHerz = 2; //default value, filled in when a song is played
+		
+			isCrit = false; //determines if player attacks will crit 
+		}
 }
 
 //functions

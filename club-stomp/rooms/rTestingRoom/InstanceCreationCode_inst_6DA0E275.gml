@@ -1,0 +1,1 @@
+regularGrip = 0;

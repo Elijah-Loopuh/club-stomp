@@ -10,21 +10,24 @@ event_inherited();
 
 checkCollision = function(substeps)
 {
-	if ((instance_place(x, y, oGlobalData.collisionList) || instance_place(x, y, oGlobalData.enemyList)) && tag == "friendly") //wallcheck collision
+	for (var i = 0; i <= substeps; i ++)
 	{
-		for (var j = 0; j < 12; j ++) //spawn a bunch of flak
+		if ((instance_place(x + vectVelocity[0]*i/substeps, y + vectVelocity[1]*i/substeps, oGlobalData.collisionList) || instance_place(x + vectVelocity[0]*i/substeps, y + vectVelocity[1]*i/substeps, oGlobalData.enemyList)) && tag == "friendly") //wallcheck collision
 		{
-			instance_create_layer(x, y, "PlayerThings", oMiddleBullet, {spread : 180, angle : 0, vectVelocity : [20*8, 0], tag : tag, damage : damage})
+			for (var j = 0; j < 12; j ++) //spawn a bunch of flak
+			{
+				instance_create_layer(x, y, "PlayerThings", oMiddleBullet, {spread : 180, angle : 0, vectVelocity : [20*8, 0], tag : tag, damage : damage})
+			}
+			instance_destroy(id);
 		}
-		instance_destroy(id);
-	}
-	if ((instance_place(x, y, oGlobalData.collisionList) || instance_place(x, y, oGlobalData.playerList)) && tag == "enemy") //wallcheck collision
-	{
-		for (var j = 0; j < 12; j ++) //spawn a bunch of flak
+		if ((instance_place(x + vectVelocity[0]*i/substeps, y + vectVelocity[1]*i/substeps, oGlobalData.collisionList) || instance_place(x + vectVelocity[0]*i/substeps, y + vectVelocity[1]*i/substeps, oGlobalData.playerList)) && tag == "enemy") //wallcheck collision
 		{
-			instance_create_layer(x, y, "PlayerThings", oMiddleBullet, {spread : 180, angle : 0, vectVelocity : [20*8, 0], tag : tag, damage : damage})
+			for (var j = 0; j < 12; j ++) //spawn a bunch of flak
+			{
+				instance_create_layer(x, y, "PlayerThings", oMiddleBullet, {spread : 180, angle : 0, vectVelocity : [20*8, 0], tag : tag, damage : damage})
+			}
+			instance_destroy(id);
 		}
-		instance_destroy(id);
 	}
 }
 

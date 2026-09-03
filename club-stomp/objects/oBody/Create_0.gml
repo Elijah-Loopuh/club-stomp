@@ -110,7 +110,7 @@ hp = hpMax;
 				mountOffset : [0, 0], //not used here
 				vectVelocity : [300*8, 0], //projectile velocity
 				tag : "friendly", //used by bullets to decide who to hurt
-				damage : 0, 
+				damage : 25, 
 				critMultiplier : 0, 
 				fireKey : mb_right, 
 				auto : false,

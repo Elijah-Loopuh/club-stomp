@@ -48,6 +48,9 @@ checkCollision = function(substeps) //use more substeps for faster projectiles
 			vectDisplacement = oGlobalData.vectSum(oLegs.vectPos, oGlobalData.vectInvert(collided.vectPos));
 			if (oGlobalData.vectLength(vectDisplacement) < 512) //stop grappling when too close
 			{
+				collided.takeDamage(damage);
+				oBody.takeDamage(-damage);
+				
 				instance_destroy(); 
 			}
 			
