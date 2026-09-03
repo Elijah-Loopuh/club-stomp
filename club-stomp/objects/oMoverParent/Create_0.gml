@@ -24,11 +24,18 @@ takeDamage = function(ammount) //take damage and die if out of hp
 	}
 }
 
+canSee = function(target, range) //returns true if there is line of sight to target & target within range
+{
+	var vectToTarget = oGlobalData.vectSum(target.vectPosTarget, oGlobalData.vectInvert(vectPos));
+	if (oGlobalData.vectLength(vectToTarget) < range && collision_line(vectPos[0], vectPos[1], target.vectPosTarget[0], target.vectPosTarget[1], oGlobalData.collisionList, false, true) == noone) //checks for player within range and line of sight
+	{
+		return true;
+	}
+	return false;
+}
+
 updateVectVelocity = function() //handles move input & drag application
 {
-
-	
-	
 	if (oGlobalData.vectLength(vectVelocity) < grip)
 	{
 		vectVelocity = oGlobalData.vectZero;
